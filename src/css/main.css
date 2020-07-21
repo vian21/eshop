@@ -1,0 +1,140 @@
+html,
+body {
+    margin: 0;
+    margin: 0;
+    background-color: #ffffff;
+    font-family: arial;
+    height: 100%;
+    width: 100%;
+}
+
+/**
+ * Default css attributes
+ */
+table th,
+tr,
+td {
+    border: 1px solid #ddd;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 3px;
+}
+
+input {
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    padding-left: .5em;
+}
+
+button {
+    background-color: inherit;
+    border-radius: 4px;
+    border: 0;
+    color: white;
+    background-color: #428bca;
+    padding-top: 3px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.new {
+    background-color: #4BCFFA;
+}
+
+.delete {
+    background-color: #dc3545;
+}
+
+select {
+    background-color: inherit;
+    border-radius: 4px;
+    border: 0;
+    color: white;
+    background-color: #428bca;
+    padding-top: 3px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+/**
+ * element specific css attributes
+ */
+
+
+#menu {
+    width: 100%;
+    background-color: #333;
+    top: 0;
+    width: 100%;
+    display: flex;
+}
+
+#navbarImage {
+    float: left;
+    width: 10%;
+}
+
+#menu img {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+
+}
+
+#navbarSearch {
+    width: 80%;
+    align-content: center;
+    margin-top: 8px;
+}
+
+#navbarSearch input {
+    width: 40%;
+}
+
+#menu input[type=text] {
+    margin-top: 8px;
+    height: 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+}
+
+.drop-settings {
+    float: right;
+    width: 10%;
+    color: white;
+
+}
+
+
+.settings:after {
+    float: right;
+    padding-top: 8px;
+    padding-right: 15px;
+    text-align: right;
+    content: '\2807';
+    font-size: 30px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-align: left;
+    text-decoration: none;
+    display: block;
+}
