@@ -19,7 +19,7 @@
     <!-- The fixed navbar -->
     <div id="menu">
         <div id="navbarImage">
-            <img src="src/img/uploaded/<?php echo fetchImage($user_id); ?>" onclick="pop()">
+            <img src="src/img/uploaded/<?php echo fetchImage($user_id); ?>" onclick="pop()" loading='lazy'>
         </div>
         <div id="navbarSearch">
             <center><input type="text" name="search" id="inputBox"></center>

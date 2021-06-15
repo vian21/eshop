@@ -86,6 +86,14 @@ function fetchProductInfo($id)
     return $query;
 }
 
+function fetchTransactionInfo($id)
+{
+    include "config.php";
+
+    $query = mysqli_fetch_assoc($connect->query("SELECT*FROM transactions WHERE id=$id LIMIT 1"));
+
+    return $query;
+}
 
 /**
  * Function to upload image and delete old one if given

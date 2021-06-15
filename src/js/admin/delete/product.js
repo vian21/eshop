@@ -10,8 +10,14 @@ async function deleteProduct(id) {
             success: function (response) {
                 if (response == 'ok') {
 
+                    //empty products array
+                    all_products=[]
+
+                    //show loading 
                     loading();
+
                     fetchProducts(true);
+                    
                     alert("Product Deleted!");
                 } else {
                     alert("Failed to delete products");

@@ -12,17 +12,19 @@ if (isset($_FILES['image'])) {
 
     $oldImgLocation =  $folder . $oldImage;
 
-    $image=$_FILES['image'];
-    $imgName = sanitize($image['name']);
+    $imgName = sanitize($_FILES['image']['name']);
 
-    $location = $folder . $imgName;
+    $image = uniqid('image_');
 
-    $imgType = pathinfo($location, PATHINFO_EXTENSION);
+    $location = $folder . $image;
+
+    $imgType = pathinfo($imgName, PATHINFO_EXTENSION);
+
     $validExt = array('jpg', 'png', 'jpeg');
     //Check if sent files are images
     if (!in_array(strtolower($imgType), $validExt)) {
     } else {
-        if (move_uploaded_file($image['tmp_name'], $location)) {
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $location)) {
             //Delete the image if they don't have same name because by default it will replace the old one
             if (isset($oldImage) && !empty($oldImage) && $location !== $oldImgLocation) {
 
@@ -32,11 +34,9 @@ if (isset($_FILES['image'])) {
             }
         }
     }
-    uploadImage($_FILES['image'], $oldImage);
 
-    $imgName = $_FILES['image']['name'];
     //Change image location in database
-    $change = $connect->query("UPDATE users SET image='$imgName' WHERE id=$id");
+    $change = $connect->query("UPDATE users SET image='$image' WHERE id=$id");
     if ($change) {
         echo "ok";
     } else {

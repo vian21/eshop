@@ -57,6 +57,11 @@ if ($enabled) {
 
 4. Then goto **webstite_url/modules/createadmin.php** in your browser.
 
+### Now the app works
+you can start by:
+1. Creating product categories
+2. Inserting Products
+
 ### 4. Other configurations
 
 #### service worker

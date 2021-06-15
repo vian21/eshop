@@ -20,7 +20,7 @@ function productsTable() {
             } else {
                 image = upload_folder + image;
             }
-            html += "<td><img src=" + image + " onclick=pop()></td>";
+            html += "<td><img src=" + image + " onclick=pop() loading='lazy'></td>";
             html += "<td>" + data[i]['name'] + "</td>";
             html += "<td>" + data[i]['quantity'] + "</td>"
             html += "<td><button id=" + i + " class=edit>Edit</button></td>";
@@ -29,7 +29,7 @@ function productsTable() {
         }
 
     } else {
-        html = "<h4>No products found!</h4>"
+        html += "</table><h4>No products found!</h4>"
     }
     html += "</table>"
 
@@ -208,7 +208,7 @@ function categoryOptions() {
             options += "<option value=" + categories[i]['id'] + ">" + categories[i]['name'] + "</option>"
         }
         return options;
-    }else{
+    } else {
         return "<option>No categories</option>"
     }
 }
@@ -232,7 +232,7 @@ function categoriesTable() {
 
         }
     } else {
-        html = "<h4>No categories</h4>"
+        html += "</table><h4>No categories</h4>"
     }
 
     //clear desktop

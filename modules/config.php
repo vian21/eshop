@@ -35,7 +35,7 @@ $user_icon = $app_url . "src/img/user.png";
 $dev_name = "Patrick Igiraneza";                      //App developer name
 $dev_mail = "igiranezapatrick31@gmail.com";           //App developer email
 $dev_tel = "";
-$dev_url = "https://myblogpat.000webhostapp.com";     //Developer personal website
+$dev_url = "https://patrick31.000webhostapp.com";     //Developer personal website
 
 //if you want to reduce price of your clients using a set price or algorithm
 $reduction = null;

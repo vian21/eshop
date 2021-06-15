@@ -36,7 +36,7 @@ async function fetchAllProducts() {
 
             //render all products frame
             productsRenderer(all_products);
-            
+
             return true;
         }
     })
@@ -531,6 +531,7 @@ async function deleteProduct(id) {
             },
             success: function (response) {
                 if (response == 'ok') {
+                    all_products=[]
                     loading();
                     fetchProducts(true);
                     alert("Product Deleted!");
@@ -700,7 +701,7 @@ function orderForm(data) {
     } else {
         image = upload_folder + image;
     }
-    html += "<center><img src=" + image + " onclick=pop()></center><br>";
+    html += "<center><img src=" + image + " onclick=pop() loading='lazy'></center><br>";
     html += "<div>Left: <span>" + data['quantity'] + "</span></div>";
     html += "<p>" + data['description'] + "</p>";
     var left = parseInt(data['quantity']);
@@ -1046,7 +1047,7 @@ $('document').ready(function () {
 function productsTable() {
     var html = "<button class=new id=new>New</button><br><br>"
     html += "<table id=products_table><tr><th>#</th><th>Image</th><th>Name</th><th>Quantity</th><th></th><th></th></tr>";
-    if (all_products !== '') {
+    if (all_products.length !== 0) {
         var data = all_products;
         var number = 0
         for (var i = 0; i < data.length; i++) {
@@ -1059,13 +1060,15 @@ function productsTable() {
             } else {
                 image = upload_folder + image;
             }
-            html += "<td><img src=" + image + " onclick=pop()></td>";
+            html += "<td><img src=" + image + " onclick=pop() loading='lazy'></td>";
             html += "<td>" + data[i]['name'] + "</td>";
             html += "<td>" + data[i]['quantity'] + "</td>"
             html += "<td><button id=" + i + " class=edit>Edit</button></td>";
             html += "<td><button id=" + data[i]['id'] + " class=delete>Delete</button></td>";
             html += "</tr>"
         }
+    } else {
+        html += "<h4>No products</h4>"
     }
     html += "</table>"
     $("#desk").html(html);
@@ -1096,7 +1099,7 @@ function orderTable(data) {
 <th>Total</th>\
 </tr>";
     var number = 0;
-    if (data !== undefined) {
+    if (data !== undefined && data.length !== 0) {
         for (var i = 0; i < data.length; i++) {
             number++;
             table += "<tr>";
@@ -1111,6 +1114,8 @@ function orderTable(data) {
             table += "</tr>"
         }
         table + "</table>";
+    }else{
+        table+="<h4>No orders</h4>"
     }
     $("#desk").html(table)
     $(".order").click(function () {

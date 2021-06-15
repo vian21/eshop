@@ -13,13 +13,18 @@ if (isset($_POST['name']) && isset($_POST['price']) && isset($_POST['quantity'])
     //if image given upload
     if (isset($_FILES['image'])) {
 
+        //get image uploaded
         $imgName = $_FILES['image']['name'];
 
-        //text to be inserted in database
-        $image = $imgName;
+        //image extension
+        $imgType = pathinfo($imgName, PATHINFO_EXTENSION);
 
-        $location = "../../../src/img/uploaded/" . $imgName;
-        $imgType = pathinfo($location, PATHINFO_EXTENSION);
+        //text to be inserted in database
+        $image = uniqid('image_');
+
+        $location = "../../../src/img/uploaded/" . $image;
+
+
         $validExt = array('png', 'jpg', 'jpeg');
         if (in_array(strtolower($imgType), $validExt)) {
             move_uploaded_file($_FILES['image']['tmp_name'], $location);

@@ -145,7 +145,7 @@ function productsRenderer(data) {
         } else {
             image = upload_folder + image;
         }
-        item += "<center><img src=" + image + " onclick=pop()></center><br>";
+        item += "<center><img src=" + image + " onclick=pop() loading='lazy'></center><br>";
 
         item += "<center><h5>" + data[i]['name'] + "</h5></center>";
         var description = data[i]["description"].slice(0,400);
@@ -200,7 +200,7 @@ function orderForm(data) {
     } else {
         image = upload_folder + image;
     }
-    html += "<center><img src=" + image + " onclick=pop()></center><br>";
+    html += "<center><img src=" + image + " onclick=pop() loading='lazy'></center><br>";
     html += "<div>Left: <span>" + data['quantity'] + "</span></div>";
     html += "<p>" + data['description'] + "</p>";
 
