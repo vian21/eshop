@@ -4,11 +4,11 @@ This is a php online shopping web application
 
 # Setting up
 
-## 1. Create a database in your server with which ever name
+### 1. Create a database in your server with which ever name
 
-## 2. Import **'db.sql'** (which is in the main directory) into your database
+### 2. Import **'db.sql'** (which is in the main directory) into your database
 
-## 3. Create an Admin user
+### 3. Create an Admin user
 
 In order to create an admin user:
 first change the default admin credentials in '**/modules/createadmin.php**'
@@ -32,13 +32,13 @@ if ($enabled) {
 
 goto **webstite_url/modules/createadmin.php**
 
-## 4. Configurations
+### 4. Configurations
 
 urls
 images
 service worker
 
-## 5. Signup via the signup page
+### 5. Signup via the signup page
 
 # Thank you 😇
 
