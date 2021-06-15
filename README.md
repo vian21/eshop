@@ -9,7 +9,9 @@ This is a php online shopping web application
 ### 2. Import **'db.sql'** (which is in the main directory) into your database
 
 ### 3. Change configuration files
-Configuration file is at '**/modules/config.php**'. Insert your database credentials and website url.
+Configuration file is at **/modules/config.php**.
+
+Insert your database credentials and website url.
 ```php
 <?php
 //Configuration file
@@ -59,9 +61,10 @@ if ($enabled) {
 
 #### service worker
 In order for your site to be fast, use a service worker to cache files.
+
 Goto **src/js/sw.js**
 ```js
-var app_url = "http://localhost/shop/";     //change this to your website url
+var app_url = "http://localhost/shop/";     //change this to your website url, with a slash at the end.
 ```
 
 ### To change default images for products and user (optional)
@@ -76,7 +79,7 @@ $user_icon = $app_url . "src/img/user.png";
 
 ```
 
-### Now users can successfully use your product.
+## **Now users can successfully use your product.**
 
 # Thank you 😇
 
