@@ -7,6 +7,8 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
     $name = sanitize($_POST['name']);
     $address = sanitize($_POST['address']);
     $email = sanitize($_POST['email']);
+    $tel = sanitize($_POST['tel']);
+
 
     /**
      * 0 : admin
@@ -15,11 +17,11 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
      */
     $type = 1;
     if (isset($_POST['type'])) {
-        $type = $_POST['type'];
+        $type = sanitize($_POST['type']);
     }
 
     //Hash the password
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = password_hash(sanitize($_POST['password']), PASSWORD_DEFAULT);
 
     //img name is empty by default in case the user entered no image
     $imgName = "";
@@ -47,7 +49,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
         //uniqueID
         $uniqueID = uniqid('', true);
 
-        $createUser = $connect->query("INSERT INTO users(name,uniqueID,home_address,email,password,image,type) VALUES('$name','$uniqueID','$address','$email','$password','$imgName',$type)");
+        $createUser = $connect->query("INSERT INTO users(name,uniqueID,home_address,email,tel,password,image,type) VALUES('$name','$uniqueID','$address','$email','$tel','$password','$imgName',$type)");
 
         /*
         * 'O' : For failed

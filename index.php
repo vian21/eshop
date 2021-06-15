@@ -11,3 +11,6 @@ if (isset($_SESSION['id'])) {
         include "views/user/index.php";
     }
 }
+else{
+    header("location:login.php");
+}

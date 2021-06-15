@@ -5,6 +5,7 @@ var urlsToCache = [
     app_url + 'src/js/jquery.js',
     app_url + 'src/js/pace.js',
     app_url + 'src/js/variables.js',
+    app_url + 'src/js/app.js',
     app_url + 'src/js/select2.js',
     app_url + 'src/js/functions.js',
     app_url + 'src/css/bootstrap.css',

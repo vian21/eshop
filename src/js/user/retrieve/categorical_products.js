@@ -7,7 +7,7 @@ async function fetchCategoricalProducts() {
         },
         success: function (response) {
             var data = JSON.parse(response);
-
+            categorical_products=data;
             return true;
         }
     })

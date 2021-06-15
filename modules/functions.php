@@ -44,7 +44,7 @@ function echoJson($data)
     if (!empty($data)) {
         echo json_encode($data);
     } else {
-        echo " ";
+        echo "";
     }
 }
 
@@ -75,4 +75,58 @@ function fetchUserInfo($id)
     $query = mysqli_fetch_assoc($connect->query("SELECT*FROM users WHERE id=$id LIMIT 1"));
 
     return $query;
+}
+
+function fetchProductInfo($id)
+{
+    include "config.php";
+
+    $query = mysqli_fetch_assoc($connect->query("SELECT*FROM products WHERE id=$id LIMIT 1"));
+
+    return $query;
+}
+
+
+/**
+ * Function to upload image and delete old one if given
+ */
+function uploadImage($image, $old = '')
+{
+
+    $folder = "../src/img/uploaded/";
+    $oldImage = sanitize($old);
+
+    $oldImgLocation =  $folder . $oldImage;
+
+    $imgName = sanitize($image['name']);
+    $location = $folder . $imgName;
+
+    $imgType = pathinfo($location, PATHINFO_EXTENSION);
+    $validExt = array('jpg', 'png', 'jpeg');
+    //Check if sent files are images
+    if (!in_array(strtolower($imgType), $validExt)) {
+    } else {
+        if (move_uploaded_file($image['tmp_name'], $location)) {
+            //Delete the image if they don't have same name because by default it will replace the old one
+            if (isset($oldImage) && !empty($oldImage) && $location !== $oldImgLocation) {
+
+                if (!empty($oldImage) && file_exists($folder . $oldImage)) {
+                    unlink($oldImgLocation);
+                }
+            }
+        }
+    }
+}
+
+
+function pronounce($input)
+{
+    $words = explode(' ',$input);
+
+    $pronuciation='';
+    foreach($words as $word){
+        $pronuciation.=metaphone($word).' ';
+    }
+
+    return $pronuciation;
 }

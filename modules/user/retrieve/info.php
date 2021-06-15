@@ -17,6 +17,7 @@ if (isset($_POST['id'])) {
     $user['id'] = $userInfo['id'];
     $user['name'] = $userInfo['name'];
     $user['email'] = $userInfo['email'];
+    $user['tel'] = $userInfo['tel'];
     $user['image'] = $userInfo['image'];
     $user['home_address'] = $userInfo['home_address'];
 

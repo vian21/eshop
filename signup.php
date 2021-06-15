@@ -32,24 +32,26 @@
 
     }
 
+    input:required {
+        border-left-color: palegreen;
+    }
+
+    input:invalid {
+        border-left-color: salmon;
+    }
+
     #submit {
-        width: 100%;
-        color: white;
-        height: 45px;
-
-        background-color: #428bca;
-    }
-
-    button {
         border: 0;
-    }
-
-    #signup {
+        border-radius: 3px;
+        color: white;
+        background-color: #428bca;
+        margin-top: 5px;
         width: 250px;
         text-decoration: none;
         font-size: 15px;
         height: 45px;
-        background-color: red;
+        height: 45px;
+
         font-family: Arial, Helvetica, sans-serif;
     }
 </style>
@@ -68,12 +70,16 @@
             <h5>Email</h5>
             <input type="email" name="email" id="email" required autocomplete="off"><br><br>
 
+            <h5>Telephone number</h5>
+            <input type="tel" name="tel" id="tel" required autocomplete="off"><br><br>
+
             <h5>Password</h5>
             <input type="password" name="password" id="password" autocomplete="off" required><br><br>
 
             <h5>Home address</h5>
-            <input type="text" name="address" id="address" autocomplete="off">
-
+            <input type="text" name="address" id="shipping_address" autocomplete="off">
+            <br><br>
+            <button id=shipCurrent class=ship>Use current location</button>
             <br>
             <br>
 
@@ -86,51 +92,106 @@
 <script>
     $(document).ready(function() {
 
+        getLocation();
+
+        /**
+         * Changing shipping address
+         */
+        $(".ship").click(function() {
+            event.preventDefault();
+            var id = $(this).attr('id');
+
+            if (id == "shipHome") {
+                shipping_address = home_address;
+                $("#shipping_address").val(home_address)
+            }
+
+            if (id == "shipCurrent") {
+                shipping_address = current_location;
+                $("#shipping_address").val(current_location)
+            }
+        })
+
         $("#submit").click(function() {
             event.preventDefault();
 
             var fd = new FormData();
             var imgFile = $("#imgChoose")[0].files[0];
+            if (imgFile == undefined) {
+                imgFile = '';
+            }
             var name = $("#name").val();
             var email = $("#email").val();
+            var tel = $("#tel").val();
             var password = $("#password").val();
-            var address = $("#address").val();
+            var address = location;
 
-            fd.append('name', name);
-            fd.append('email', email);
-            fd.append('password', password);
-            fd.append('img', imgFile);
-            fd.append('address', address);
+            var validName, validEmail, validPassword, validTel = false;
 
-            $.ajax({
-                method: "post",
-                url: "modules/signup.php",
-                enctype: 'multipart/form-data',
-                processData: false,
-                contentType: false,
-                data: fd,
-                success: function(response) {
-                    if (response == "ok") {
+            if (name == '') {
+                alert("Enter User name")
+            } else {
+                validName = true;
+            }
 
-                        alert("Account Created!");
+            if (email == '') {
+                alert("Enter an email")
+            } else {
+                validEmail = true;
+            }
 
-                        window.location.replace("login.php");
+            if (tel == '') {
+                alert("Enter a telephone number from which we will be able to contact you on delivery!")
+            } else {
+                validTel = true;
+            }
 
+            if (password == '') {
+                alert("Enter a password")
+            } else {
+                validPassword = true;
+            }
+            if (validName == true && validEmail == true && validTel == true && validPassword == true) {
+                fd.append('name', name);
+                fd.append('email', email);
+                fd.append('tel', tel);
+                fd.append('password', password);
+                fd.append('img', imgFile);
+                fd.append('address', current_location);
+
+                $.ajax({
+                    method: "post",
+                    url: "modules/signup.php",
+                    enctype: 'multipart/form-data',
+                    processData: false,
+                    contentType: false,
+                    data: fd,
+                    success: function(response) {
+                        if (response == "ok") {
+
+                            alert("Account Created!");
+
+                            window.location.replace("login.php");
+
+                        }
+                        if (response == "ko") {
+                            alert("Failed to create user account")
+                        }
+                        if (response == "exists") {
+                            alert("Email already taken. Use another one!")
+                        }
                     }
-                    if (response == "ko") {
-                        alert("Failed to create user account")
-                    }
-                    if (response == "exists") {
-                        alert("Email already taken. Use another one!")
-                    }
-                }
-            })
+                })
+            }
+
         })
         //If user selects an image
         $("#imgChoose").change(function() {
             readURL(this);
         });
     });
+
+
     //Get the image location and ajax preview
     function readURL(input) {
         if (input.files && input.files[0]) {

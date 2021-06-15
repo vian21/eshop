@@ -1,17 +1,43 @@
 <script src="<?php echo $app_url; ?>src/js/jquery.js"></script>
 <script src="<?php echo $app_url; ?>src/js/pace.js"></script>
-<script src="<?php echo $app_url; ?>src/js/select2.js"></script>
-<script src="<?php echo $app_url; ?>src/js/main.js"></script>
+<!-- <script src="<?php echo $app_url; ?>src/js/select2.js"></script> -->
+<!-- <script src="<?php echo $app_url; ?>src/js/leaflet.js"></script> -->
 
+<script type="text/javascript" src="<?php echo $app_url; ?>modules/app.php"></script>
+
+<!-- <script type="text/javascript" src="<?php echo $app_url; ?>src/js/app.js"></script>-->
 
 <link rel="stylesheet" href="<?php echo $app_url; ?>src/css/bootstrap.css">
-<link rel="stylesheet" href="<?php echo $app_url; ?>src/css/select2.css">
+<!-- <link rel="stylesheet" href="<?php echo $app_url; ?>src/css/select2.css"> -->
 <link rel="stylesheet" href="<?php echo $app_url; ?>src/css/main.css">
+
+<!-- <link rel="stylesheet" href="<?php echo $app_url; ?>src/css/leaflet.css"> -->
+
 
 <!-- service worker -->
 <script>
+    //app data
     var app_url = "<?php echo $app_url; ?>";
+    var app_icon = "<?php echo $app_icon; ?>";
+    var app_description = "<?php echo $app_description; ?>";
+    var user_icon = "<?php echo $user_icon; ?>";
+    var upload_folder = "<?php echo $upload_folder; ?>";
+    var product_default = "<?php echo $product_default; ?>";
 
+    //user data
+    <?php
+    if (isset($_SESSION['id'])) {
+        $user_id = $_SESSION['id'];
+        $user_type = $_SESSION['type'];
+    ?>
+        var userId = <?php echo $user_id; ?>;
+        var userType = <?php echo $user_type; ?>;
+        var logged = true;
+    <?php
+    }
+    ?>
+
+    //service worker to cache files and make website faster
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
             navigator.serviceWorker.register('<?php echo $app_url; ?>src/js/sw.js').then(function(registration) {
@@ -66,3 +92,9 @@
         height: 2px;
     }
 </style>
+
+<!-- Image popup -->
+<div id="popup" style="display:none;">
+    <span id="closePopup">&times;</span>
+    <img src="" id="popupImg">
+</div>

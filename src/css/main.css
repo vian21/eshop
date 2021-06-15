@@ -21,10 +21,31 @@ td {
     padding: 3px;
 }
 
+table th {
+    text-align: center;
+}
+
+th,
+td {
+    padding: 7px;
+    text-align: left;
+}
+
 input {
     border: 1px solid #ddd;
     background-color: #ffffff;
     padding-left: .5em;
+    border-radius: 3px;
+}
+
+
+
+input:required {
+    border-left-color: palegreen;
+}
+
+input:invalid {
+    border-left-color: salmon;
 }
 
 button {
@@ -36,6 +57,9 @@ button {
     padding-top: 3px;
     padding-right: 10px;
     padding-left: 10px;
+    margin-right: 5px;
+    margin-top: 5px;
+
 }
 
 .new {
@@ -58,6 +82,90 @@ select {
 }
 
 /**
+ * Popup css
+ */
+
+
+#popup {
+    width: auto;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0.5%;
+    left: 0;
+    bottom: 0.5%;
+    right: 0;
+    margin: auto;
+    z-index: 500;
+    background-color: rgba(0, 0, 0, 0.845);
+    border: 3px solid #fff;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+#popup img {
+    border-radius: 20px;
+    width: 80%;
+    top: 0.5%;
+    left: 0;
+    bottom: 0.5%;
+    right: 0;
+    height: auto;
+}
+
+@media only screen and (max-width:700px) {
+    #popup img {
+        width: 90%;
+    }
+}
+
+#closePopup {
+    color: wheat;
+    font-size: 50px;
+    position: absolute;
+    top: 1%;
+    right: 2%;
+    cursor: pointer;
+    opacity: 0.5;
+    z-index: 10;
+}
+
+/**
+ * Modal css
+ */
+.modal {
+    display: block;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+
+
+}
+
+.modal form {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+
+}
+
+/**
  * element specific css attributes
  */
 
@@ -72,7 +180,7 @@ select {
 
 #navbarImage {
     float: left;
-    width: 10%;
+    left: 0;
 }
 
 #menu img {
@@ -87,13 +195,20 @@ select {
 }
 
 #navbarSearch {
-    width: 80%;
     align-content: center;
     margin-top: 8px;
+    margin-left: 20px;
+    width: 300px;
+}
+
+@media screen and (max-width: 750px) {
+    #navbarSearch {
+        width: 60%;
+    }
 }
 
 #navbarSearch input {
-    width: 40%;
+    width: 100%;
 }
 
 #menu input[type=text] {
@@ -106,9 +221,9 @@ select {
 
 .drop-settings {
     float: right;
-    width: 10%;
     color: white;
-
+    right: 0;
+    position: absolute;
 }
 
 
@@ -137,4 +252,117 @@ select {
     text-align: left;
     text-decoration: none;
     display: block;
+}
+
+#desk {
+    display: flex;
+    margin-left: 20px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+
+}
+
+@media screen and (max-width: 750px) {
+    #desk {
+        margin-left: 10px;
+    }
+}
+
+
+.item {
+    width: 30%;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}
+
+@media screen and (max-width: 750px) {
+    .item {
+        width: 90%;
+    }
+}
+
+.item button,
+img {
+    width: 100%;
+}
+
+.item img {
+    border-radius: 10px;
+    width: 100%;
+    height: 300px;
+    /*border: 1px solid black;*/
+}
+
+.item .description {
+    font-size: 15px;
+}
+
+.item button {
+    height: 45px;
+}
+
+#categories {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+#categories button {
+    margin-right: 10px;
+    padding-top: 3px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+#orderForm {
+    width: 90%;
+    margin-left: 20px;
+}
+
+#orderForm img {
+    width: 250px;
+    border-radius: 10px;
+}
+
+#msg {
+    color: #64ac5a;
+}
+
+/**
+  * View product 
+  */
+.container {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #428bca;
+    margin-top: 20px;
+}
+
+#customer {
+    width: 100px;
+    border-radius: 50%;
+}
+
+#product {
+    width: 200px;
+}
+
+.actions {
+    width: 200px;
+    margin-top: 20px;
+    height: 50px;
+}
+
+@media screen and (max-width:750px) {
+    .actions {
+        width: 100%
+    }
+}
+
+#products_table img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
 }
