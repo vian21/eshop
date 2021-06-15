@@ -8,7 +8,7 @@ This is a php online shopping web application
 
 ### 2. Import **'db.sql'** (which is in the main directory) into your database
 
-### 3. change configuration files
+### 3. Change configuration files
 ```php
 <?php
 //Configuration file
@@ -16,7 +16,7 @@ This is a php online shopping web application
 /**
  * Establish database connection
  */
-$connect = mysqli_connect('DATABASE_HOS', 'DATABASE_USER', 'DATABASE_PASSWORD', 'DATABASE _NAME');
+$connect = mysqli_connect('DATABASE_HOST', 'DATABASE_USER', 'DATABASE_PASSWORD', 'DATABASE _NAME');
 
 /**Configurations */
 
@@ -31,7 +31,9 @@ $app_url = "http://localhost/shop/";
 ### 3. Create an Admin user
 
 In order to create an admin user:
-first change the default admin credentials in '**/modules/createadmin.php**'
+1. Goto '**/modules/createadmin.php**'.
+2. First enable the file .
+3. Then change credentials if need be.
 
 ```php
 <?php
@@ -40,7 +42,7 @@ first change the default admin credentials in '**/modules/createadmin.php**'
  * By default, this file is disabled for security purposes
  * To be used only once to create an admin and then disable it again(make it false)
  */
-$enabled = true;     //set this to true
+$enabled = false;     //set this to true
 
 if ($enabled) {
     include 'config.php';
@@ -50,9 +52,16 @@ if ($enabled) {
     $password = "123";                     //Admin password
 ```
 
-goto **webstite_url/modules/createadmin.php**
+4. The goto '**webstite_url/modules/createadmin.php**' in your browser.
 
-### 4. Configurations
+### 4. Other configurations
+
+#### service worker
+In order for your site to be fast, use a service worker to cache files 
+Goto '***src/js/sw.js**'
+```js
+var app_url = "http://localhost/shop/";     //change this to ur website url
+```
 
 ### To change default images for products and user
 ```php
@@ -64,12 +73,6 @@ $product_default = $upload_folder . "../product.jpeg";
 //user
 $user_icon = $app_url . "src/img/user.png";
 
-```
-#### service worker
-In order for your site to be fast, use a service worker to cache files 
-Goto src/js/sw.js
-```js
-var app_url = "http://localhost/shop/";     //change this to ur website url
 ```
 
 ### Now users can successfully use your product
