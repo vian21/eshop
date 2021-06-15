@@ -9,6 +9,7 @@ This is a php online shopping web application
 ### 2. Import **'db.sql'** (which is in the main directory) into your database
 
 ### 3. Change configuration files
+Configuration file is at '**/modules/config.php**'. Insert your database credentials and website url.
 ```php
 <?php
 //Configuration file
@@ -31,7 +32,7 @@ $app_url = "http://localhost/shop/";
 ### 3. Create an Admin user
 
 In order to create an admin user:
-1. Goto '**/modules/createadmin.php**'.
+1. Goto **/modules/createadmin.php**.
 2. First enable the file .
 3. Then change credentials if need be.
 
@@ -52,18 +53,18 @@ if ($enabled) {
     $password = "123";                     //Admin password
 ```
 
-4. The goto '**webstite_url/modules/createadmin.php**' in your browser.
+4. Then goto **webstite_url/modules/createadmin.php** in your browser.
 
 ### 4. Other configurations
 
 #### service worker
-In order for your site to be fast, use a service worker to cache files 
-Goto '***src/js/sw.js**'
+In order for your site to be fast, use a service worker to cache files.
+Goto **src/js/sw.js**
 ```js
-var app_url = "http://localhost/shop/";     //change this to ur website url
+var app_url = "http://localhost/shop/";     //change this to your website url
 ```
 
-### To change default images for products and user
+### To change default images for products and user (optional)
 ```php
 
 //image storage
@@ -75,7 +76,7 @@ $user_icon = $app_url . "src/img/user.png";
 
 ```
 
-### Now users can successfully use your product
+### Now users can successfully use your product.
 
 # Thank you 😇
 
