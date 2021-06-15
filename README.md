@@ -4,9 +4,36 @@ This is a php online shopping web application
 
 # Setting up
 
-### 1. Create a database in your server with which ever name
+### 1. Create a database on your server with whichever name
 
 ### 2. Import **'db.sql'** (which is in the main directory) into your database
+
+### 3. change configuration files
+```php
+<?php
+//Configuration file
+
+/**
+ * Establish database connection
+ */
+$connect = mysqli_connect('localhost', 'root', '', 'shop');          //('database_host','database_user','database_password','database_name')
+
+/**Configurations */
+
+/** Website url */
+$app_url = "http://localhost/shop/";                                
+```
+### change default images for products and user
+```php
+
+//image storage
+$upload_folder = $app_url . "src/img/uploaded/";
+$product_default = $upload_folder . "../product.jpeg";
+
+//user
+$user_icon = $app_url . "src/img/user.png";
+
+```
 
 ### 3. Create an Admin user
 
