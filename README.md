@@ -16,23 +16,16 @@ This is a php online shopping web application
 /**
  * Establish database connection
  */
-$connect = mysqli_connect('localhost', 'root', '', 'shop');          //('database_host','database_user','database_password','database_name')
+$connect = mysqli_connect('DATABASE_HOS', 'DATABASE_USER', 'DATABASE_PASSWORD', 'DATABASE _NAME');
 
 /**Configurations */
 
-/** Website url */
-$app_url = "http://localhost/shop/";                                
-```
-### change default images for products and user
-```php
-
-//image storage
-$upload_folder = $app_url . "src/img/uploaded/";
-$product_default = $upload_folder . "../product.jpeg";
-
-//user
-$user_icon = $app_url . "src/img/user.png";
-
+/** 
+ * Website url 
+ * If on localhost 'http://localhost/[folder_name]/'
+ * If online 'https://website_url.com/' with a slash at the end
+*/
+$app_url = "http://localhost/shop/";                                 
 ```
 
 ### 3. Create an Admin user
@@ -61,12 +54,27 @@ goto **webstite_url/modules/createadmin.php**
 
 ### 4. Configurations
 
-urls
-images
-service worker
+### To change default images for products and user
+```php
 
-### 5. Signup via the signup page
+//image storage
+$upload_folder = $app_url . "src/img/uploaded/";
+$product_default = $upload_folder . "../product.jpeg";
+
+//user
+$user_icon = $app_url . "src/img/user.png";
+
+```
+#### service worker
+In order for your site to be fast, use a service worker to cache files 
+Goto src/js/sw.js
+```js
+var app_url = "http://localhost/shop/";     //change this to ur website url
+```
+
+### Now users can successfully use your product
 
 # Thank you 😇
 
 ## For Jesus, I code
+### Patrick Igiraneza
