@@ -20,8 +20,13 @@ function compressCodeIn($folder)
     $code = "";
 
     foreach ($files as $file) {
-        $sub_code = file_get_contents($folder . $file);
-        $code .= "\n" . $sub_code;
+        if (is_file($folder . $file)) {
+            $sub_code = file_get_contents($folder . $file);
+
+            if ($sub_code) {
+                $code .= "\n" . $sub_code;
+            }
+        }
     }
     return minify($code);
 }

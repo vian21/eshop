@@ -25,7 +25,7 @@ if ($enabled) {
 
         echo "<center><h1>Admin account created!</h1><p>Remember to disable this file to prevent hackers from creating admin accounts themselves!</p></center>";
     } else {
-
+        echo $connect->error;
         echo "<h4>Failed to open admin Account! Check your database credentials in <b>config.php<b/></h4>";
     }
 }
