@@ -88,5 +88,4 @@ $user_icon = $app_url . "src/img/user.png";
 
 # Thank you 😇
 
-## For Jesus, I code
 ### Patrick Igiraneza
