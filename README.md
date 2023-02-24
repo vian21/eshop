@@ -2,6 +2,22 @@
 
 This is a php online shopping web application
 
+**Overview (PDF)**: [here](docs/OnlineShopping-Pitch.pdf)
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/images/login.png">
+<img src="docs/images/password-reset.png">
+<img src="docs/images/admin.png">
+<p>Adding a product</p>
+<img src="docs/images/add-product.png">
+<p>Main User Interface</p>
+<img src="docs/images/user-ui.png">
+<p>Ordering page</p>
+<img src="docs/images/ordering-page.png">
+
+</details>
+
 # Setting up
 
 ### 1. Create a database on your server with whichever name
@@ -9,9 +25,11 @@ This is a php online shopping web application
 ### 2. Import **'db.sql'** (which is in the main directory) into your database
 
 ### 3. Change configuration files
+
 Configuration file is at **/modules/config.php**.
 
 Insert your database credentials and website url.
+
 ```php
 <?php
 //Configuration file
@@ -23,17 +41,18 @@ $connect = mysqli_connect('DATABASE_HOST', 'DATABASE_USER', 'DATABASE_PASSWORD',
 
 /**Configurations */
 
-/** 
- * Website url 
+/**
+ * Website url
  * If on localhost 'http://localhost/[folder_name]/'
  * If online 'https://website_url.com/' with a slash at the end
 */
-$app_url = "http://localhost/shop/";                                 
+$app_url = "http://localhost/shop/";
 ```
 
 ### 3. Create an Admin user
 
 In order to create an admin user:
+
 1. Goto **/modules/createadmin.php**.
 2. First enable the file .
 3. Then change credentials if need be.
@@ -58,21 +77,26 @@ if ($enabled) {
 4. Then goto **webstite_url/modules/createadmin.php** in your browser.
 
 ### Now the app works
+
 you can start by:
+
 1. Creating product categories
 2. Inserting Products
 
 ### 4. Other configurations
 
 #### service worker
+
 In order for your site to be fast, use a service worker to cache files.
 
 Goto **src/js/sw.js**
+
 ```js
-var app_url = "http://localhost/shop/";     //change this to your website url, with a slash at the end.
+var app_url = "http://localhost/shop/"; //change this to your website url, with a slash at the end.
 ```
 
 ### To change default images for products and user (optional)
+
 ```php
 
 //image storage
